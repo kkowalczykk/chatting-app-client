@@ -100,7 +100,7 @@ const Join = () => {
                         <Header>Log in</Header>
                         <Input placeholder='Username' type='text' onChange={(e) => setName(e.target.value)}></Input>
                         <Input placeholder='Room name' type='text' onChange={(e) => setRoom(e.target.value)}></Input>
-                        <Link to={`/chat?name=${name}&room${room}`} onClick={event => (!name || !room) ? event.preventDefault() : null} style={{ display: 'block', maxWidth: '100%', padding: '0 10px' }}>
+                        <Link to={`/chat?name=${name}&room=${room}`} onClick={event => (!name || !room) ? event.preventDefault() : null} style={{ display: 'block', maxWidth: '100%', padding: '0 10px' }}>
                               <Btn type='submit'>Join Room</Btn>
                         </Link>
                   </FormBox>
