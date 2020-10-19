@@ -10,26 +10,28 @@ const Wrapper = styled.div`
       display:flex;
       align-items: center;
       justify-content: center;
-      background: #222831;
+      background: #fa7f72;
 `
-const FormBox = styled.div`
+const FormBox = styled.form`
       box-sizing: border-box;
       width: 25%;
       min-width: 320px;
       height: 500px;
+      max-width: 500px;
       display: flex;
       justify-content: center;
       flex-direction: column;
-      background: #393e46;
+      background: #f1f6f9;
+      border: 1px solid #389393;
 `
 const Header = styled.h1`
       text-align: center;
-      color: #00adb5;
+      color: #fa7f72;
 
 `
 
 const Input = styled.input`
-      background: #222831;
+      background: #f1f6f9;
       display: block;
       margin: 20px 10px;
       max-width: 100%;
@@ -39,15 +41,15 @@ const Input = styled.input`
       border-radius: 6px;
       -webkit-appearance: none;
       color: white;
-      border: 1px solid #00adb5;
+      border: 1px solid #389393;
       transition: border .3s ease;
       &::placeholder {
-            color: white;
+            color: #fa7f72;
       }
       &:focus {
-            outline: none;
-            border-color: #00adb5;
-            box-shadow: 0 0 10px 7px rgba(0, 255, 245, 0.5);
+            outline: none !important;
+            border-color: #389393;
+            box-shadow: 0 0 10px 7px rgba(56, 147, 147, 0.5);
       }
       
 `
@@ -57,9 +59,9 @@ const Btn = styled.button`
       width: 100%;
       margin: 40px 0;
       padding: 10px 10px;
-      background: #222831;
+      background: #f1f6f9;
       border: 1px solid #00adb5;
-      color: #00adb5;
+      color: #fa7f72;
       overflow: hidden;
       position: relative;
       cursor: pointer;
@@ -73,16 +75,18 @@ const Btn = styled.button`
                   background: linear-gradient(
                         120deg,
                         transparent,
-                        #00fff5,
+                        #fab2aa,
                         transparent
                   );
                   transform: translateX(-100%);
                   transition: 0.6s;
             }
-
+      &:focus {
+            outline: none !important;
+      }
       &:hover {
       background: transparent;
-      box-shadow: 0 0 10px 7px rgba(0, 255, 245, 0.5);
+      box-shadow: 0 0 10px 7px rgba(250, 127, 114, 0.5);
 
             &::before {
                   transform: translateX(100%);
