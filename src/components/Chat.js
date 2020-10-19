@@ -6,6 +6,7 @@ import RoomTitle from './RoomTitle';
 import RoomData from './RoomData';
 import MessageInput from './MessageInput';
 import Messages from './Messages';
+import { useHistory } from 'react-router';
 
 const Wrapper = styled.div`
       width: 100%;
@@ -51,8 +52,7 @@ const Chat = ({ location }) => {
       const [room, setRoom] = useState('');
       const [message, setMessage] = useState('');
       const [messages, setMessages] = useState([]);
-      const [roomData, setRoomData] = useState();
-
+      const [roomData, setRoomData] = useState(null);
       const endpoint = 'localhost:5000';
       useEffect(() => {
             socket = io(endpoint);
@@ -74,11 +74,11 @@ const Chat = ({ location }) => {
             })
 
             return () => {
-                  socket.emit('disconnect');
-
+                  socket.disconnect();
                   socket.off();
+                  console.log('czyszcze');
             }
-      }, [endpoint, location.search])
+      }, [endpoint, location])
 
 
 
@@ -87,6 +87,7 @@ const Chat = ({ location }) => {
             e.preventDefault();
             if (message) {
                   socket.emit('sendMessage', message, () => setMessage(''));
+                  setMessage('');
             }
       }
 
@@ -97,11 +98,11 @@ const Chat = ({ location }) => {
                               <RoomTitle></RoomTitle>
                               <div className="row">
                                     <div className="col active-users">
-                                          <RoomData></RoomData>
+                                          <RoomData roomData={roomData}></RoomData>
                                     </div>
                                     <div className="col vert">
                                           <Messages></Messages>
-                                          <MessageInput></MessageInput>
+                                          <MessageInput sendMessage={sendMessage} message={message} setMessage={setMessage}></MessageInput>
                                     </div>
                               </div>
                         </Container>

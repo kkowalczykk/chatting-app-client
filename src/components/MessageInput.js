@@ -20,11 +20,14 @@ const SendBtn = styled.button`
       border: none;
 `
 
-const MessageInput = () => {
+const MessageInput = (props) => {
+      const { message, setMessage, sendMessage } = props;
       return (
             <Wrapper>
-                  <Input></Input>
-                  <SendBtn></SendBtn>
+                  <Input value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        onKeyPress={e => e.key === 'Enter' ? sendMessage(e) : null}></Input>
+                  <SendBtn onClick={(e) => sendMessage(e)}></SendBtn>
             </Wrapper>
       );
 }
