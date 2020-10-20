@@ -40,7 +40,7 @@ const Input = styled.input`
       font-size: 14px;
       border-radius: 6px;
       -webkit-appearance: none;
-      color: white;
+      color: black;
       border: 1px solid #389393;
       transition: border .3s ease;
       &::placeholder {

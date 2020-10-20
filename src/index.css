@@ -4,3 +4,14 @@
       margin: 0;
       font-family: 'Roboto', sans-serif;
 }
+
+.scrolled-wrapper{
+      background: #f1f6f9;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      max-height: calc(100% - 60px);
+      max-width: 720px;
+      box-sizing: border-box;
+}

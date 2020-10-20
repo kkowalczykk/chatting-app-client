@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-      width: 100%;
+      max-width: 100%;
       height: 60px;
       display:flex;
 `
@@ -18,6 +18,8 @@ const SendBtn = styled.button`
       background: #389393;
       outline: none;
       border: none;
+      color: white;
+      font-size: 1.1em;
 `
 
 const MessageInput = (props) => {
@@ -27,7 +29,7 @@ const MessageInput = (props) => {
                   <Input value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         onKeyPress={e => e.key === 'Enter' ? sendMessage(e) : null}></Input>
-                  <SendBtn onClick={(e) => sendMessage(e)}></SendBtn>
+                  <SendBtn onClick={(e) => sendMessage(e)}>Send</SendBtn>
             </Wrapper>
       );
 }

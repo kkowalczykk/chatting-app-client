@@ -15,11 +15,12 @@ const Wrapper = styled.div`
       align-items: center;
       flex-wrap: wrap;
       justify-content: center;
-      background: #fa7f72;
+      background: rgba(250, 127, 114,0.7);;
 `
 const Container = styled.div`
       width: 900px;
       height: 600px;
+      max-height: 600px;
       background: #f1f6f9;
       border: 1px solid #389393;
       display: flex;
@@ -27,14 +28,17 @@ const Container = styled.div`
 
       .row{
             display:flex;
-            height: 100%;
+            height: 570px;
+            max-height: 100%;
             width: 100%;
+            box-sizing: border-box;
             .col{
                   height: 100%;
-                  flex-grow: 4;
+                  max-height: 100%;
+                 width: 75%;
             }
             .active-users{
-                  flex-grow: 1;
+                  width: 25%;
             }
 
             .vert{
@@ -76,7 +80,6 @@ const Chat = ({ location }) => {
             return () => {
                   socket.disconnect();
                   socket.off();
-                  console.log('czyszcze');
             }
       }, [endpoint, location])
 
@@ -101,7 +104,7 @@ const Chat = ({ location }) => {
                                           <RoomData roomData={roomData}></RoomData>
                                     </div>
                                     <div className="col vert">
-                                          <Messages></Messages>
+                                          <Messages messages={messages} user={name}></Messages>
                                           <MessageInput sendMessage={sendMessage} message={message} setMessage={setMessage}></MessageInput>
                                     </div>
                               </div>
