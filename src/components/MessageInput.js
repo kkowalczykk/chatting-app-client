@@ -11,6 +11,11 @@ const Input = styled.input`
       flex-grow:1;
       outline: none;
       border: none;
+      padding: 0 10px;
+
+      &::placeholder{
+            color: #919191;
+      }
 `
 const SendBtn = styled.button`
       width: 80px;
@@ -26,7 +31,7 @@ const MessageInput = (props) => {
       const { message, setMessage, sendMessage } = props;
       return (
             <Wrapper>
-                  <Input value={message}
+                  <Input value={message} placeholder='Type your message here'
                         onChange={(e) => setMessage(e.target.value)}
                         onKeyPress={e => e.key === 'Enter' ? sendMessage(e) : null}></Input>
                   <SendBtn onClick={(e) => sendMessage(e)}>Send</SendBtn>

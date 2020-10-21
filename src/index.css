@@ -12,6 +12,6 @@
       flex-direction: column;
       overflow: hidden;
       max-height: calc(100% - 60px);
-      max-width: 720px;
+      max-width: 100%;
       box-sizing: border-box;
 }

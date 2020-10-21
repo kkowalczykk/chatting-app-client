@@ -28,10 +28,10 @@ const CloseImg = styled(Link)`
       }
 `
 
-const RoomTitle = (props) => {
+const RoomTitle = ({ room }) => {
       return (
             <Wrapper>
-                  <h4>test</h4>
+                  <h4>{room}</h4>
                   <CloseImg to='/'><img src={close} alt="close" /></CloseImg>
             </Wrapper>
       );

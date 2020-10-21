@@ -15,12 +15,12 @@ const Wrapper = styled.div`
       align-items: center;
       flex-wrap: wrap;
       justify-content: center;
-      background: rgba(250, 127, 114,0.7);;
+      background: #fa7f72;
 `
 const Container = styled.div`
-      width: 900px;
-      height: 600px;
-      max-height: 600px;
+      width: 1100px;
+      height: 700px;
+      max-height: 700px;
       background: #f1f6f9;
       border: 1px solid #389393;
       display: flex;
@@ -28,7 +28,7 @@ const Container = styled.div`
 
       .row{
             display:flex;
-            height: 570px;
+            height: 670px;
             max-height: 100%;
             width: 100%;
             box-sizing: border-box;
@@ -57,17 +57,20 @@ const Chat = ({ location }) => {
       const [message, setMessage] = useState('');
       const [messages, setMessages] = useState([]);
       const [roomData, setRoomData] = useState(null);
-      const endpoint = 'localhost:5000';
+      const endpoint = 'https://chatting-app-back.herokuapp.com';
+      let history = useHistory();
       useEffect(() => {
             socket = io(endpoint);
             let params = location.search;
             params = params[0] === '?' ? params.substr(1, params.length) : params;
-            const { name, room } = queryString.parse(params);
+            const { name, room } = queryString.parse(params.toLowerCase());
             setName(name);
             setRoom(room);
-
             socket.emit('join', { name, room });
-
+            socket.on('userExists', () => {
+                  history.push('/');
+                  alert('User with this nickname is already in this room');
+            })
             socket.on('message', message => {
                   setMessages(messages => [...messages, message]);
             });
@@ -98,7 +101,7 @@ const Chat = ({ location }) => {
             <div>
                   <Wrapper>
                         <Container>
-                              <RoomTitle></RoomTitle>
+                              <RoomTitle room={room}></RoomTitle>
                               <div className="row">
                                     <div className="col active-users">
                                           <RoomData roomData={roomData}></RoomData>
